@@ -1,0 +1,40 @@
+Build a pixel-perfect React Native (Expo) prototype using NativeWind (Tailwind CSS) or standard StyleSheets that completely replaces the old rewards layout from image_8e8d06.png with our new feature layout shown in watermarked_img_3260723425853768271.png.
+
+### Global App Framework
+- Create an Expo Bottom Tab Navigator with 5 tabs: Discover, My Tasks, Rewards, Wallet, Profile.
+- Header Style: Every screen shares a consistent top row. Clean white background, bold title on the left, and a pill-shaped black badge on the right displaying the user's current balance: "2,199 💎".
+- Font Styling: Use heavy, high-contrast black typography, modern rounded cards, and an accent yellow color (#FFD147).
+
+---
+
+### Core Feature Redesign: Rewards Screen
+Implement the layout shown in watermarked_img_3260723425853768271.png. Clean out all elements from image_8e8d06.png (no more generic ticket icons or plain bottom sheets).
+
+1. Active Goal Card (GoalCard)
+- Create a prominent, rounded white container card at the top of the screen with a subtle shadow and light border.
+- Goal Header Row: Displays a money bag/reward emoji followed by bold text "€6.75 PayPal". On the far right, render a small, pill-shaped black button that says "Change Goal".
+- Dynamic Progress Bar: Below the header row, implement a sleek progress bar with a bright yellow fill indicating current completion. Display the numeric values cleanly ("2199" on the left end, "3999" on the right end).
+- Analytics Stats Row: Create 3 clean vertical columns centered below the progress bar to show the user's velocity:
+  * Column 1: A light yellow pill box containing a bold font percentage: "55.0%"
+  * Column 2: Centered bold text: "2.4 days"
+  * Column 3: Right-aligned bold text: "1,800 remaining"
+- Primary Action: At the bottom of this goal card, place a full-width, pill-shaped button with a dark background and bright text reading "Redeem Now".
+
+2. Recommended Section ("🚀 Fastest Path to Your Goal")
+- Directly underneath the goal card, place a clean section header text row: "🚀 Fastest Path to Your Goal" in a medium-bold size.
+- Horizontal Carousel: Implement a horizontal <FlatList> showing game option cards (GameCard).
+
+3. Individual Game Cards (GameCard)
+Each card in the carousel must look exactly like the items in watermarked_img_3260723425853768271.png:
+- Layout: A rounded rectangle container with explicit widths appropriate for a horizontal card peek.
+- Status Badges Row: At the absolute top-left of the card graphic area, overlay a blue badge reading "Rank #1". At the top-right, overlay a bright green badge reading "NEW".
+- Earning Rate Pill: In the center of the card graphic area, render a bright yellow pill badge with high-contrast text: "≈820 💎/hr".
+- Game Details: Underneath the main graphic area, display the bold title "Pixel Flow" and a smaller gray category subtitle "Arcade".
+- CTA Button: A full-width black button at the bottom of the card reading "Play Now".
+
+---
+
+### Mock Interaction Workflows
+- Goal Picker Stack: Clicking "Change Goal" opens a mock modal screen listing all available targets from our catalog (e.g., "€10.12 Amazon", "€5 Google Play"). Tapping one updates the state of the master active GoalCard back on the main dashboard, recalculating the progress percentages and remaining gems dynamically.
+- Core Action Flow: Clicking "Play Now" triggers a momentary loading indicator mimicking deep-linking into a game. 
+- Goal Achieved State: If the active goal calculation yields 100% or greater progress, make the "Redeem Now" button flash a celebratory green success outline.
